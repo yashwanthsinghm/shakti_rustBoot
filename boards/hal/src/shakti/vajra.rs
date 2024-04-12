@@ -9,37 +9,6 @@ use riscv_rt::entry;
 use shakti_riscv_hal::spi::{SPIInner, SPI_OFFSET};
 use shakti_riscv_hal::uart::{UartInner, UART_OFFSET};
 
-#[entry]
-fn main() -> ! {
-    let mut uart = unsafe { UartInner::new(UART_OFFSET) };
-    let mut spi = unsafe { SPIInner::new(SPI_OFFSET) };
-    spi.init();
-    let dr5 = spi.flash_device_id();
-    unsafe {
-        delay(1000000);
-    }
-
-    uart.write_uart_string("Hello from shakti \n ");
-    let a = spi.flash_read(0x00BF_0000);
-    spi.flash_write_enable();
-    //spi.flash_erase(0x00b0_0000);
-    spi.flash_status_register_read();
-
-    let z = spi.flash_write(0x00B0_0000, 0x12345678);
-    unsafe {
-        delay(2000);
-    }
-    let b = spi.flash_read(0x00B0_0000);
-
-    spi.flash_write_enable();
-    // spi.flash_erase(0x00b0_0000);
-    spi.flash_status_register_read();
-    let c = spi.flash_read(0x00B0_0000);
-
-    uart.write_uart_string("END of the main function");
-
-    loop {}
-}
 
 pub struct FlashWriterEraser {
     pub spi: SPIInner,
