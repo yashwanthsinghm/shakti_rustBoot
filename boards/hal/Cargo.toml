@@ -43,7 +43,7 @@ stm32f7xx-hal = {version = "0.7.0", features = ["stm32f746", "rt"],optional = tr
 stm32f3xx-hal = {version = "0.9.1", features = ["stm32f334x8", "rt"],optional = true}
 # platform specific dependencies for rp-pico
 rp2040-hal = {version = "0.7.0", optional = true}
-shakti_riscv_hal = "0.1.2"
+shakti_riscv_hal = {version = "0.1.2", optional = true}
 #panic-halt = "0.2.0"
 riscv-rt = "0.11.0"
 riscv = "0.10"

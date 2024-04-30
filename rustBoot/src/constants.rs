@@ -13,6 +13,17 @@ pub const SWAP_PARTITION_ADDRESS: usize = 0x57000;
 #[cfg(feature = "nrf52840")]
 pub const UPDATE_PARTITION_ADDRESS: usize = 0x58000;
 
+#[cfg(feature = "shakti")]
+pub const SECTOR_SIZE: usize = 0x1000;
+#[cfg(feature = "shakti")]
+pub const PARTITION_SIZE: usize = 0x28000;
+#[cfg(feature = "shakti")]
+pub const BOOT_PARTITION_ADDRESS: usize = 0x80100000;
+#[cfg(feature = "shakti")]
+pub const SWAP_PARTITION_ADDRESS: usize = 0x80300000;
+#[cfg(feature = "shakti")]
+pub const UPDATE_PARTITION_ADDRESS: usize = 0x80200000;
+
 #[cfg(feature = "stm32f411")]
 pub const SECTOR_SIZE: usize = 0x20000;
 #[cfg(feature = "stm32f411")]
