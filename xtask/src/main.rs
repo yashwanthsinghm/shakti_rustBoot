@@ -215,10 +215,20 @@ fn sign_packages(target: &&str, boot_ver: &&str, updt_ver: &&str) -> Result<(), 
             let _p = xshell::pushd(root_dir().join("boards/sign_images/signed_images"))?;
             cmd!("rust-objcopy -I elf32-littlearm ../../target/thumbv6m-none-eabi/release/rp2040_bootfw -O binary rp2040_bootfw.bin").run()?;
             cmd!("rust-objcopy -I elf32-littlearm ../../target/thumbv6m-none-eabi/release/rp2040_updtfw -O binary rp2040_updtfw.bin").run()?;
-
+           ///home/iyg1kor/projects/Shakti/shakti_rustBoot/shakti_rustBoot/boards/target/riscv64imac-unknown-none-elf/release/boot_fw
             let _p = xshell::pushd(root_dir().join("rbsigner"))?;
             cmd!("cargo run mcu-image ../boards/sign_images/signed_images/rp2040_bootfw.bin nistp256 ../boards/sign_images/keygen/ecc256.der {boot_ver}").run()?;
             cmd!("cargo run mcu-image ../boards/sign_images/signed_images/rp2040_updtfw.bin nistp256 ../boards/sign_images/keygen/ecc256.der {updt_ver}").run()?;
+            Ok(())
+        }
+        "shakti" => {
+            let _p = xshell::pushd(root_dir().join("boards/sign_images/signed_images"))?;
+            cmd!("rust-objcopy -I elf32-littlearm ../../boards/target/riscv64imac-unknown-none-elf/release/boot_fw -O binary shakti_bootfw.bin").run()?;
+            cmd!("rust-objcopy -I elf32-littlearm ../../boards/target/riscv64imac-unknown-none-elf/release/updatefw -O binary shakti_updtfw.bin").run()?;
+
+            let _p = xshell::pushd(root_dir().join("rbsigner"))?;
+            cmd!("cargo run mcu-image ../boards/sign_images/signed_images/shakti_bootfw.bin nistp256 ../boards/sign_images/keygen/ecc256.der {boot_ver}").run()?;
+            cmd!("cargo run mcu-image ../boards/sign_images/signed_images/shakti_updtfw.bin nistp256 ../boards/sign_images/keygen/ecc256.der {updt_ver}").run()?;
             Ok(())
         }
         _ => todo!(),

@@ -1,0 +1,8 @@
+cargo:rustc-cfg=riscv
+cargo:rustc-cfg=riscv64
+cargo:rustc-link-search=/home/iyg1kor/projects/Shakti/shakti_rustBoot/shakti_rustBoot/boards/bootloaders/shakti/target/riscv64imac-unknown-none-elf/debug/build/riscv-rt-c4d6efe8d54aac87/out
+cargo:rerun-if-changed=link.x
+cargo:rustc-cfg=riscvm
+cargo:rustc-cfg=riscvc
+cargo:rustc-cfg=riscvi
+cargo:rustc-cfg=riscva

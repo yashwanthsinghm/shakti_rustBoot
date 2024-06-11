@@ -1,0 +1,3 @@
+cargo:rustc-link-search=/home/iyg1kor/projects/Shakti/shakti_rustBoot/shakti_rustBoot/boards/bootloaders/shakti/target/riscv64imac-unknown-none-elf/debug/build/shakti_riscv_hal-128e421c6748327c/out
+cargo:rerun-if-changed=memory.x
+cargo:rerun-if-changed=build.rs
