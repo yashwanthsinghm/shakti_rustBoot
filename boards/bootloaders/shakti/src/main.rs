@@ -14,6 +14,10 @@ use shakti_riscv_hal::spi::{SPIInner, SPI_OFFSET};
 use riscv::asm;
 use riscv_rt::{entry};
 use core::arch::asm;
+
+use rustBoot_hal::shakti::vajra::FlashWriterEraser;
+use rustBoot_update::update::{update_flash::FlashUpdater, UpdateInterface};
+
 // use rustBoot::constants;
 
 // use core::fmt::Write;
@@ -57,6 +61,9 @@ fn main() -> ! {
     uart.write_uart_string("Value succeffully read...\n ");
 
     uart.write_uart_string("Control transferring to RAM");
+
+    let updater = FlashUpdater::new(FlashWriterEraser::new());
+    updater.rustboot_start();
     
     unsafe{
         // Execute the inline assembly code

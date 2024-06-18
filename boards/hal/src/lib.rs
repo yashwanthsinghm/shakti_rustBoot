@@ -17,6 +17,8 @@ pub mod nxp;
 pub mod stm;
 #[cfg(feature = "pico")]
 pub mod pico;
+#[cfg(feature = "shakti")]
+pub mod shakti;
 
 /// This is the trait that abstracts out the necessary hardware-specific flash operations
 /// such as

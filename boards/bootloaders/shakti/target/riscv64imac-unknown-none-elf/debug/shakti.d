@@ -1,1 +1,0 @@
-/home/iyg1kor/projects/Shakti/shakti_rustBoot/shakti_rustBoot/boards/bootloaders/shakti/target/riscv64imac-unknown-none-elf/debug/shakti: /home/iyg1kor/projects/Shakti/shakti_rustBoot/shakti_rustBoot/boards/bootloaders/shakti/src/main.rs

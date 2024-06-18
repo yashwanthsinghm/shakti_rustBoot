@@ -10,6 +10,8 @@ shakti_riscv_hal = "0.1.2"
 riscv-rt = "0.12"
 riscv = "0.11"
 embedded-hal = "1.0.0-alpha.8"
+rustBoot-hal = {path = "../../hal", default-features = false, features = ["vajra"]}
+rustBoot-update = {path = "../../update", features = ["vajra"]}
 
 
 [workspace]

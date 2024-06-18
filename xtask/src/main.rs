@@ -221,7 +221,7 @@ fn sign_packages(target: &&str, boot_ver: &&str, updt_ver: &&str) -> Result<(), 
             cmd!("cargo run mcu-image ../boards/sign_images/signed_images/rp2040_updtfw.bin nistp256 ../boards/sign_images/keygen/ecc256.der {updt_ver}").run()?;
             Ok(())
         }
-        "shakti" => {
+        "vajra" => {
             let _p = xshell::pushd(root_dir().join("boards/sign_images/signed_images"))?;
             cmd!("rust-objcopy -I elf32-littlearm ../../target/riscv64imac-unknown-none-elf/release/boot_fw -O binary shakti_bootfw.bin").run()?;
             cmd!("rust-objcopy -I elf32-littlearm ../../target/riscv64imac-unknown-none-elf/release/update_fw -O binary shakti_updtfw.bin").run()?;
