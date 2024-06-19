@@ -2,8 +2,8 @@
 #![no_main]
 #![feature(asm)]
 
-// #[cfg(feature = "defmt")]
-// use defmt_rtt as _; // global logger
+#[cfg(feature = "defmt")]
+use defmt_rtt as _; // global logger
 // use panic_probe as _;
 
 // use rustBoot_hal::stm::stm32f411::FlashWriterEraser;
@@ -62,8 +62,8 @@ fn main() -> ! {
 
     uart.write_uart_string("Control transferring to RAM");
 
-    let updater = FlashUpdater::new(FlashWriterEraser::new());
-    updater.rustboot_start();
+    // let updater = FlashUpdater::new(FlashWriterEraser::new());
+    // updater.rustboot_start();
     
     unsafe{
         // Execute the inline assembly code
@@ -91,12 +91,12 @@ fn main() -> ! {
 //     );
 // }
 
-#[panic_handler] // panicking behavior
-fn panic(_: &core::panic::PanicInfo) -> ! {
-    loop {
-        unsafe { riscv::asm::nop() };
-    }
-}
+// #[panic_handler] // panicking behavior
+// fn panic(_: &core::panic::PanicInfo) -> ! {
+//     loop {
+//         unsafe { riscv::asm::nop() };
+//     }
+// }
 
 // should implement 
 // #[panic_handler] // panicking behavior
